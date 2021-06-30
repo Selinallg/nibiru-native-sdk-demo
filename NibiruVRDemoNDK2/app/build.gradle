@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.nibiru.demo2.ndk"
+        minSdkVersion 19
+        targetSdkVersion 22
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++17"
+            }
+        }
+
+        ndk {
+            //  abiFilters "arm64-v8a", "armeabi-v7a"
+            abiFilters "armeabi-v7a"
+        }
+
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ["src/main/jniLibs"]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+
+    }
+}
+
+dependencies {
+    compile files('libs/nibiru_vr_pro_sdk_2_4_8.jar')
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nibiru.demo2.ndk"
+    android:versionCode="170913"
+    android:versionName="2.1">
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+<!--    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"-->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name">
+
+        <meta-data
+            android:name="NibiruVRVersion"
+            android:value="2" />
+        <meta-data
+            android:name="NIBIRU_PLUGIN_IDS"
+            android:value="" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="com.nibiru.intent.category.NVR" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SecondActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ThirdActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape" />
+
+        <!-- 是否指定NDK加载库名称 -->
+        <meta-data
+            android:name="NIBIRU_NDK_SO_V2"
+            android:value="libnvr_v2_NDK.so" />
+        <meta-data
+            android:name="NIBIRU_NDK_SO_PLATFORM"
+            android:value="libNibiruPlatform_NDK.so" />
+        <meta-data
+            android:name="NIBIRU_NDK_SO_ACTION"
+            android:value="libnvr_action_NDK.so" />
+    </application>
+
+</manifest>
